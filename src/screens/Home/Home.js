@@ -2,8 +2,10 @@ import { Image, ScrollView, StyleSheet, Text, TextInput, View, TouchableOpacity,
 import React, { useEffect, useState } from 'react'
 import { API_URL, colorTheme } from '../../constant'
 import DoctorCard from '../../components/DoctorCard'
+import UpcomingInteviewCard from '../../components/UpcomingInteviewCard'
 import ArticleCard from '../../components/ArticleCard'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import LocationModal from '../../components/Modal/LocationModal'
@@ -26,6 +28,8 @@ import LottieView from 'lottie-react-native'
 import { YoutubeHomeData } from '../../assets/data/YoutubeData'
 import YoutubeModal from '../../components/Modal/YoutubeModal'
 import BlogScreenModal from '../../components/Modal/BlogScreenModal'
+import UpcomingInterviewModal from '../../components/Modal/UpcomingInterViewModal'
+import { universityService } from '../../services/University'
 
 const data = [
   {
@@ -69,6 +73,7 @@ export default function Home({ navigation }) {
   const [article, setarticle] = useState({})
   const [articleLoading, setarticleLoading] = useState(false)
   const [search, setSearch] = useState('')
+  const [univesityName, setUnivesityName] = useState('')
   const [isPost, setIsPost] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [filterModal, setFilterModal] = useState(false)
@@ -79,26 +84,13 @@ export default function Home({ navigation }) {
   const [AddTaskModal, setAddTaskModal] = useState(false);
   const [supportiveContent, setSupportiveContent] = useState(false);
   const [seeAllTask, setSeeAllTask] = useState(false);
-  const [journalModal, setjournalModalModal] = useState(false);
-  const [score, setScore] = useState(0);
-  const [isBatchLoading, setisBatchLoading] = useState(true)
   const [blogScreenModal, setBlogScreenModal] = useState(false)
+  const [upComingInterViewModal, setUpComingInterViewModal] = useState(false)
   const [ModalData, setBlogModalData] = useState({
     title: '',
     desc: '',
     img: ''
   })
-  const [currentLevel, setCurrentLevel] = useState(0); // Initialize with level 0
-
-  const levels = [
-    { threshold: 150, source: require('../../assets/json/level-intial-batch.json') },
-    { threshold: 500, source: require('../../assets/json/level-0-batch.json') },
-    { threshold: 2000, source: require('../../assets/json/level-1-batch.json') },
-    { threshold: 5000, source: require('../../assets/json/level-2-batch.json') },
-    { threshold: 10000, source: require('../../assets/json/level-3-batch.json') },
-    { threshold: 20000, source: require('../../assets/json/level-5-batch.json') },
-  ];
-
 
   useEffect(() => {
     articlesServices.FetchArticles().then((
@@ -108,19 +100,16 @@ export default function Home({ navigation }) {
       }
     )).catch(err => { console.log('error fetching data'); })
 
-    BlogServices.getScore().then(
+    universityService.getUniversityName().then((
       res => {
-        setScore(res.data[0].score)
-        setisBatchLoading(false)
+        setUnivesityName(res.data[0].name)
       }
-    ).catch()
+    ))
+
+
   }, [])
 
-  useEffect(() => {
-    // Find the current level based on the user's score
-    const level = levels.findIndex(level => score < level.threshold);
-    setCurrentLevel(level === -1 ? levels.length - 1 : level); // If userScore exceeds the highest threshold, set to the last level
-  }, [score]);
+
 
 
   return (
@@ -154,6 +143,13 @@ export default function Home({ navigation }) {
             <LocationModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
             : null
           }
+
+          {upComingInterViewModal
+            ?
+            <UpcomingInterviewModal modalVisible={upComingInterViewModal} setModalVisible={setUpComingInterViewModal} />
+            : null
+          }
+
           {notificationModal
             ?
             <NotificationModal modalVisible={notificationModal} setModalVisible={setNotificationModal} />
@@ -196,12 +192,6 @@ export default function Home({ navigation }) {
               : null
           }
           {
-            journalModal
-              ?
-              <JournalModal modalVisible={journalModal} setModalVisible={setjournalModalModal} />
-              : null
-          }
-          {
             supportiveContent
               ?
               <YoutubeModal modalVisible={supportiveContent} setModalVisible={setSupportiveContent} />
@@ -216,43 +206,25 @@ export default function Home({ navigation }) {
         </>
         <View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
           <View>
-            <Text style={{ color: "gray" }}>Location</Text>
             <Pressable
               style={{ flexDirection: "row", alignItems: 'center' }}
               onPress={() => setModalVisible(true)}
             >
-              <MaterialIcons name="location-pin" color={colorTheme.primaryColor} size={25} />
-              <Text style={{ color: "black", fontSize: 15, fontWeight: "700" }}>New York,USA</Text>
+              <MaterialCommunityIcons name="office-building" color={colorTheme.primaryColor} size={25} />
+              {univesityName === '' ? <Text>Loading....</Text> :
+                <Text style={{ color: "black", fontSize: 15, fontWeight: "700", }}>
+                  {univesityName.length > 25 ? univesityName.substring(0, 25) + '...' : univesityName}
+                </Text>
+              }
               <MaterialIcons name="keyboard-arrow-down" color={colorTheme.primaryColor} size={25} />
             </Pressable>
           </View>
           <View
-            style={{ width: 80, height: 32, backgroundColor: "white", justifyContent: "center", alignItems: "center", borderRadius: 50, flexDirection: 'row' }}>
+            style={{ width: 50, height: 32, backgroundColor: "white", justifyContent: "center", alignItems: "center", borderRadius: 50, flexDirection: 'row' }}>
             <MaterialIcons name="videocam" color={colorTheme.primaryColor} size={25} style={{ marginRight: 10 }} onPress={() => { navigation.navigate("VideoCall") }} />
             <MaterialIcons name="notifications-active" color={colorTheme.primaryColor} size={25} style={{ marginRight: 10 }} onPress={() => setNotificationModal(true)} />
-            <FontAwesome name="pencil-square-o" color={colorTheme.primaryColor} size={25} style={{ marginRight: 10 }} onPress={() => setjournalModalModal(true)} />
           </View>
         </View>
-        {isBatchLoading ? (
-          <ActivityIndicator size="large" />
-        ) : (
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <LottieView
-              source={levels[currentLevel].source} // Dynamically select the animation source based on the current level
-              autoPlay
-              loop
-              style={{ width: 100, height: 100, backgroundColor: 'white' }}
-            />
-            <View style={{ width: '60%' }}>
-              <Text
-                style={{ textAlign: 'center', fontSize: 18, color: 'black', fontWeight: 'bold', fontStyle: 'italic' }}
-                numberOfLines={2}
-              >
-                {`Congrats! You are level ${currentLevel} now`}
-              </Text>
-            </View>
-          </View>
-        )}
         <View style={{ width: '90%', marginBottom: 10, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
           <View style={styles.textInput}>
             <MaterialIcons name="search" color={colorTheme.primaryColor} size={25} />
@@ -284,26 +256,7 @@ export default function Home({ navigation }) {
           />
         </View> */}
         {/* youtube webview ended */}
-        <View style={{ marginBottom: 15, width: '90%' }}>
-          <QuoteOfTheDay />
-        </View>
-        <View style={{ width: '90%', }}>
-          <View style={{ flexDirection: "row", justifyContent: 'space-between', padding: 10 }}>
-            <Text style={[styles.grayText, { color: 'black' }]}>Your Todos...</Text>
-            <Text onPress={() => { setSeeAllTask(true) }} style={[{ color: colorTheme.primaryColor, fontSize: 15 }]}>See All Tasks</Text>
-          </View>
-          <View style={{ borderWidth: 1, borderColor: colorTheme.borderColor, borderRadius: 10 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 15 }}>
-              <Text style={[styles.smallText, { fontSize: 15, color: 'gray' }]}>TaskList for your chores!!!</Text>
-              <TouchableOpacity
-                onPress={() => { setAddTaskModal(true) }}
-                style={{ backgroundColor: colorTheme.primaryColor, justifyContent: 'center', alignItems: 'center', borderRadius: 30, elevation: 10 }}>
-                <MaterialIcons name="add" color={"white"} size={25} style={{ padding: 10 }} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-        <View style={{ width: '90%', flexDirection: "row", justifyContent: 'space-between', marginTop: 10 }}>
+        {/* <View style={{ width: '90%', flexDirection: "row", justifyContent: 'space-between', marginTop: 10 }}>
           <Text style={[styles.grayText, {}]}>Supportive Content</Text>
           <Text
             onPress={() => { setSupportiveContent(true) }}
@@ -311,9 +264,10 @@ export default function Home({ navigation }) {
         </View>
         <Carousel data={YoutubeHomeData}>
           <YoutubeVideos />
-        </Carousel>
+        </Carousel> */}
+
         <View style={{ width: '90%', flexDirection: "row", justifyContent: 'space-between' }}>
-          <Text style={[styles.grayText, { marginBottom: 8, }]}>Top Specialist</Text>
+          <Text style={[styles.grayText, { marginBottom: 8, }]}>Top Companies</Text>
           <Text
             onPress={() => { setTopDoctorModal(true) }}
             style={[{ color: colorTheme.primaryColor, fontSize: 15 }]}>See All</Text>
@@ -321,7 +275,18 @@ export default function Home({ navigation }) {
         <Carousel data={data} autoPlay>
           <DoctorCard isNavigate />
         </Carousel>
-        <View style={{}}>
+
+        <View style={{ width: '90%', flexDirection: "row", justifyContent: 'space-between', marginTop: 10 }}>
+          <Text style={[styles.grayText, {}]}>Upcoming Interviews</Text>
+          <Text
+            onPress={() => { setUpComingInterViewModal(true) }}
+            style={[{ color: colorTheme.primaryColor, fontSize: 15 }]}>See All</Text>
+        </View>
+        <Carousel data={data} autoPlay>
+          <UpcomingInteviewCard isNavigate />
+        </Carousel>
+
+        {/* <View style={{}}>
           <View style={{ width: '90%', flexDirection: "row", justifyContent: 'space-between', padding: 10 }}>
             <Text style={[styles.grayText, { marginBottom: 8, }]}>Doctor Speciality</Text>
             <Text onPress={() => { setcategoryModalVisible(true) }} style={[{ color: colorTheme.primaryColor, fontSize: 15 }]}>See All</Text>
@@ -340,7 +305,7 @@ export default function Home({ navigation }) {
               <FontAwesome5 name="brain" color={colorTheme.primaryColor} size={25} />
             </View>
           </View>
-        </View>
+        </View> */}
         <View style={[{ width: "90%", }]}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <TouchableOpacity

@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home/Home'
 import Appointment from '../screens/AppointMents/Appointment'
 import Profile from '../screens/Profile/Profile'
-import Search from '../screens/Search/Search'
 import Activity from '../screens/Activity/Activity'
 
 import Chat from '../screens/Chat/Chat';
@@ -45,7 +44,7 @@ export default function BottomTab() {
                     headerShown: false,
                     tabBarLabel: 'Activity',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="gamepad-variant" color={color} size={35} />
+                        <Fontisto name="shopping-bag" color={color} size={35} />
                     ),
 
                 }}

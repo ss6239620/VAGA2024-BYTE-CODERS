@@ -64,14 +64,13 @@ export default function App() {
         <Stack.Screen name='SelectAppointmentPackage' component={SelectAppointmentPackage} options={{ headerShown: false }} />
         <Stack.Screen name='PatientDetails' component={PatientDetails} options={{ headerShown: false }} />
         <Stack.Screen name='PaymentMethod' component={PaymentMethod} options={{ headerShown: false }} />
-        <Stack.Screen name='SuccesfullPayment' component={SuccesfullPayment} options={{ headerShown: false }} />
+        {/* <Stack.Screen name='SuccesfullPayment' component={SuccesfullPayment} options={{ headerShown: false }} /> */}
         <Stack.Screen name='Message' component={Message} options={{ headerShown: false }} />
         <Stack.Screen name='VideoCall' component={VideoCall} options={{ headerShown: false }} />
         <Stack.Screen name='CancelBooking' component={CancelBooking} options={{ headerShown: false }} />
         <Stack.Screen name='RescheduledAppointment' component={RescheduledAppointment} options={{ headerShown: false }} />
         <Stack.Screen name='EditProfile' component={EditProfile} options={{ headerShown: false }} />
         <Stack.Screen name='Settings' component={Settings} options={{ headerShown: false }} />
-        <Stack.Screen name='OfflineVideo' component={OfflineVideo} options={{ headerShown: false }} />
         <Stack.Screen name='PasswordManager' component={PasswordManager} options={{ headerShown: false }} />
         <Stack.Screen name='PrivacyPolicy' component={PrivacyPolicy} options={{ headerShown: false }} />
         <Stack.Screen name='HelpCenter' component={HelpCenter} options={{ headerShown: false }} />
@@ -90,8 +89,6 @@ export default function App() {
         <Stack.Screen name='Music' component={Music} options={{ headerShown: false }} />
         <Stack.Screen name='Books' component={Books} options={{ headerShown: false }} />
         <Stack.Screen name='ChatBot' component={ChatBot} options={{ headerShown: false }} />
-        <Stack.Screen name='CheckMood' component={CheckMood} options={{ headerShown: false }} />
-        <Stack.Screen name='Survey' component={Survey} options={{ headerShown: false }} />
         <Stack.Screen name='HowYourDay' component={HowYourDay} options={{ headerShown: false }} />
         <Stack.Screen name='Helpless' component={Helpless} options={{ headerShown: false }} />
       </Stack.Navigator>

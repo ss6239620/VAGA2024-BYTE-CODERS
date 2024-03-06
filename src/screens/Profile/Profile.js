@@ -34,24 +34,9 @@ const profileIcon = [
     screen: 'EditProfile'
   },
   {
-    name: 'credit-card',
-    title: 'Payment Methods',
-    screen: 'PaymentMethod'
-  },
-  {
     name: 'heart-outline',
     title: 'Favourite',
     screen: 'Favorites'
-  },
-  {
-    name: 'video',
-    title: 'View Offline Videos',
-    screen: 'OfflineVideo'
-  },
-  {
-    name: 'sticker-emoji',
-    title: 'Check Your Mood',
-    screen: 'CheckMood'
   },
   {
     name: 'account',
@@ -67,12 +52,6 @@ const profileIcon = [
     name: 'lock',
     title: 'Privacy Policy',
     screen: 'PrivacyPolicy'
-  },
-
-  {
-    name: 'share-outline',
-    title: 'Take Survey',
-    screen: 'Survey'
   },
 ]
 
@@ -113,15 +92,6 @@ export default function Profile() {
         {profileIcon.map((_, index) => (
           <InfoCard iconName={_.name} title={_.title} key={index} isNavigate navigateTo={_.screen} />
         ))}
-        <TouchableOpacity
-          onPress={() => { SendSOS() }}
-          style={{ flexDirection: "row", padding: 10 }}>
-          <MaterialIcons name={'sos'} color={colorTheme.primaryColor} size={23} />
-          <View style={{ flexDirection: "row", justifyContent: 'space-between', alignItems: "center", width: '90%', paddingHorizontal: 10 }}>
-            <Text style={styles.bigText}>(SOS)   </Text>
-            <MaterialIcons name={'arrow-forward-ios'} color={colorTheme.primaryColor} size={23} />
-          </View>
-        </TouchableOpacity>
         <Pressable
           onPress={() => { setModalVisible(true) }}
           style={{ flexDirection: "row", padding: 10 }}>
