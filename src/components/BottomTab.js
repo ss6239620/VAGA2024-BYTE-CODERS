@@ -42,7 +42,7 @@ export default function BottomTab() {
                 component={Activity}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Activity',
+                    tabBarLabel: 'Resource',
                     tabBarIcon: ({ color, size }) => (
                         <Fontisto name="shopping-bag" color={color} size={35} />
                     ),

@@ -14,15 +14,13 @@ export default function Appointment({ navigation }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Upcoming' },
-    { key: 'second', title: 'Completed' },
-    { key: 'third', title: 'Cancelled' },
+    { key: 'second', title: 'AllCompany' },
   ]);
 
 
   const renderScene = SceneMap({
     first: () => <AppontmentUpcoming navigation={navigation} />,
     second: AppointmentCompleted,
-    third: AppointCancelled,
   });
 
   return (
