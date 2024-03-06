@@ -1,12 +1,12 @@
-import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { blackText, blueText, colorTheme, grayText } from '../../constant'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import DoctorCard from '../../components/DoctorCard'
 import Calendar from '../Calender'
 import NotificationModal from '../Modal/NotificationModal'
 import { upComingData } from '../../assets/data/UniversityData'
+import { sendEmail } from '../EmailAndSMS'
 // import { universityService } from '../../services/University'
 
 const days = ["Mon", "Tue", "Wed", "Th", "Fr", "Sat", "Sun"]
@@ -62,11 +62,21 @@ export default function Appointment({ navigation }) {
     const formattedTime = `${hour}:${minute}:${second}`;
 
     return {
-        date: formattedDate,
-        time: formattedTime,
-        dayOfWeek: daysOfWeek[dayOfWeek]
+      date: formattedDate,
+      time: formattedTime,
+      dayOfWeek: daysOfWeek[dayOfWeek]
     };
-}
+  }
+
+  function handleClick(params) {
+    sendEmail(
+      'ss6239620@gmail.com',
+      'Greeting!',
+      '"I regret to inform you that I need to request a rescheduling of my placement interview due to unforeseen circumstances. Unfortunately, a sudden family emergency has arisen, requiring my immediate attention and presence. I am deeply committed to this opportunity and eager to participate in the interview process. However, given the current situation, I kindly ask for your understanding and flexibility in arranging an alternative date and time. I assure you of my dedication to this placement and am hopeful for the chance to showcase my qualifications at a later date. Thank you for your consideration and assistance in accommodating this request."'
+    ).then(() => {
+      console.log('Our email successful provided to device mail ');
+    });
+  }
 
   return (
     <>
@@ -112,8 +122,13 @@ export default function Appointment({ navigation }) {
                         <MaterialCommunityIcons name="clock-time-four-outline" color={colorTheme.primaryColor} size={20} style={{ marginRight: 5 }} />
                         <Text style={styles.smallText}>{parseDateTimeString(_.date).time}</Text>
                       </View>
-                      
                     </View>
+                    <TouchableOpacity
+                      style={{ backgroundColor: colorTheme.primaryColor, width: '90%', height: 40, borderRadius: 50, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: colorTheme.borderColor, alignSelf: 'center', marginBottom: 14 }}
+                      onPress={() => { handleClick() }}
+                    >
+                      <Text style={{ color: "white" }}>Reschedule Request</Text>
+                    </TouchableOpacity>
                   </Pressable>
                 </View>
               ))}

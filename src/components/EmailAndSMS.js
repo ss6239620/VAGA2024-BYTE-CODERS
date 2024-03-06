@@ -1,3 +1,7 @@
+// send-email.js
+
+// We can use react-native Linking to send email
+import qs from 'qs';
 import { Linking } from 'react-native';
 
 
@@ -27,4 +31,3 @@ export async function sendEmail(to, subject, body, options = {}) {
 
     return Linking.openURL(url);
 }
-

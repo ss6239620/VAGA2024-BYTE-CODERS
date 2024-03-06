@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const data = [
   {
-    screen: 'Workout',
+    screen: 'Quiz',
     path: require('../../assets/json/Yoga-game.json')
   },
   {
