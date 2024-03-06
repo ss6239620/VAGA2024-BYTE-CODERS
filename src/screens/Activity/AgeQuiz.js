@@ -23,8 +23,8 @@ export default Quiz = () => {
 
     const fetchQuiz = () => {
         setLoading(true);
-        universityService.getQuiz().then((res) => {
-            console.log(res.data);
+        universityService.getAgeQuiz().then((res) => {
+            // console.log(res.data);
             setQuiz(res.data);
             setLoading(false);
         });
@@ -45,7 +45,7 @@ export default Quiz = () => {
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
-                <Header leftIconName header={'Practice With Quiz'} titleMargin={30} />
+                <Header leftIconName header={'Age Atpitude'} titleMargin={30} />
             </View>
             {/* Main Content */}
             {loading ? <ActivityIndicator /> : (
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '90%',
         alignSelf: 'center',
-        marginTop: 80
+        marginTop: 50
     },
     footer: {
         padding: 10,

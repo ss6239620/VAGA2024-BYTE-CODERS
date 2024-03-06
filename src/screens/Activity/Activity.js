@@ -11,39 +11,43 @@ import { useNavigation } from '@react-navigation/native'
 const data = [
   {
     screen: 'Quiz',
-    path: require('../../assets/json/Yoga-game.json')
+    name:'Random Quiz'
   },
   {
-    screen: 'BubblePop',
-    path: require('../../assets/json/bubles-game.json')
+    screen: 'MixtureQuiz',
+    name:'Mix-Allg Quiz'
   },
   {
-    screen: 'WordGuessGame',
-    path: require('../../assets/json/word-game.json')
+    screen: 'ProfitLossQuiz',
+    name:'Profit & Loss'
   },
   {
-    screen: 'TicTacToe',
-    path: require('../../assets/json/tictactoe-game.json')
+    screen: 'Permute',
+    name:'Permutaion & Combination'
   },
   {
-    screen: 'JokesGenerator',
-    path: require('../../assets/json/joke-game.json')
+    screen: 'SimpleIntrest',
+    name:'Speed And Time'
   },
   {
-    screen: 'RockPaperScissor',
-    path: require('../../assets/json/sps-game.json')
+    screen: 'AgeQuiz',
+    name:'Age Quiz'
   },
 
 ]
 
 const reccomendData = [
   {
-    screen: 'Music',
-    path: require('../../assets//img/MusicLogo.png')
+    screen: 'Videos',
+    path: require('../../assets//img/videos.png')
   },
   {
     screen: 'Books',
     path: require('../../assets/img/BookLogo.png')
+  },
+  {
+    screen: 'ResumeBuilder',
+    path: require('../../assets/img/resume.png')
   },
 ]
 
@@ -53,17 +57,9 @@ function DifferentActivities() {
     <View style={{ padding: 3, marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap' }}>
       {data.map((item, index) => (
         <Pressable key={index} onPress={() => navigation.navigate(item.screen)} style={{ borderColor: colorTheme.borderColor, width: '48%', marginBottom: 10, borderWidth: 1, borderRadius: 20, marginTop: 5 }}>
-          {item.path ?
-            <LottieView
-              source={item.path}
-              autoPlay
-              loop
-              style={{ width: 150, height: 150 }}
-            />
-            :
-            <Image source={require('../../assets/img/hospital.jpg')} resizeMode='cover' style={{ width: '100%', height: 190, borderRadius: 20 }} />
-
-          }
+            <View style={{width:150,height:100,justifyContent:'center',alignItems:'center'}}>
+              <Text style={[styles.bigText]}>{item.name}</Text>
+            </View>
         </Pressable>
       ))}
     </View>
@@ -88,7 +84,6 @@ function Reccommendations() {
 }
 
 export default function Activity() {
-  const [memeModal, setMemeModal] = useState(false)
 
   const navigation = useNavigation()
 
@@ -122,11 +117,6 @@ export default function Activity() {
   return (
     <View style={styles.container}>
       <>
-        {memeModal
-          ?
-          <MemeGeneratorModal modalVisible={memeModal} setModalVisible={setMemeModal} />
-          : null
-        }
       </>
       <ScrollView>
         <View style={{ width: '100%', flexDirection: 'row' }}>
@@ -167,14 +157,14 @@ export default function Activity() {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.subContainer}>
+        {/* <View style={styles.subContainer}>
           <UnderLine marginTop={20} thickness={2} />
           <TouchableOpacity
             onPress={() => { setMemeModal(true) }}
             style={{ backgroundColor: colorTheme.secondaryColor, borderRadius: 10, marginTop: 15, width: '60%' }}>
             <Text style={[styles.bigText, { color: 'white', paddingHorizontal: 20, paddingVertical: 10, textAlign: 'center' }]}>CREATE A MEME</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={[styles.subContainer, { marginTop: 28, }]}>
           <Text style={[styles.bigText, { textAlign: 'left', fontSize: 18, }]}>REFRESH YOUR MOOD</Text>
           <Reccommendations />

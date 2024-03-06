@@ -43,4 +43,100 @@ async function upComingInteview() {
     })
 }
 
-export const universityService = { getUniversityName ,upComingInteview}
+async function getQuiz() {
+
+    console.log('in quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/Random`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+async function getMixQuiz() {
+
+    console.log('in mix quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/MixtureAndAlligation`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+async function getProfitLoss() {
+
+    console.log('in mix quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/ProfitAndLoss`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+async function getPermute() {
+
+    console.log('in mix quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/PermutationAndCombination`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+async function getSimpleIntrest() {
+
+    console.log('in mix quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/SimpleInterest`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+async function getAgeQuiz() {
+
+    console.log('in mix quiz');
+    return new Promise((resolve, reject) => {
+        axios.get(`https://aptitude-api.vercel.app/Age`)
+            .then(async (response) => {
+                try {
+                    resolve(response)
+                } catch (e) { reject(e) }
+            }).catch((err) => {
+                console.log(err.response.data);
+                reject(err)
+            })
+    })
+}
+
+export const universityService = { getUniversityName, upComingInteview, getQuiz, getMixQuiz, getProfitLoss,getPermute,getSimpleIntrest,getAgeQuiz }

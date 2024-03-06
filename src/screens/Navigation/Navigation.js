@@ -32,17 +32,18 @@ import Hospital from '../Hospital'
 import Favorites from '../Profile/Favorites'
 import ForgetPassword from '../Authentication/ForgetPassword'
 import Activity from '../Activity/Activity'
-import TicTacToe from '../Activity/Tic-Tac-Toe'
-import WordGuessGame from '../Activity/WordGuessGame'
-import RockPaperScissor from '../Activity/RockPaperScissor'
-import JokesGenerator from '../Activity/JokesGenerator'
-import BubblePop from '../Activity/BubblePop'
-import Music from '../Activity/Music'
 import Books from '../Activity/Books'
 import ChatBot from '../Chat/ChatBot'
 import HowYourDay from '../Survey/HowYourDay'
 import Helpless from '../Survey/Helpless'
 import Quiz from '../Activity/Quiz'
+import Videos from '../Activity/Videos'
+import ResumeBuilder from '../Activity/ResumeBuilder'
+import MixtureQuiz from '../Activity/MixtureQuiz'
+import ProfitLossQuiz from '../Activity/ProfitLossQuiz'
+import Permute from '../Activity/Permute'
+import SimpleIntrest from '../Activity/SimpleIntrest'
+import AgeQuiz from '../Activity/AgeQuiz'
 
 const Stack = createNativeStackNavigator()
 
@@ -79,17 +80,18 @@ export default function App() {
         <Stack.Screen name='LoginChoice' component={LoginChoice} options={{ headerShown: false }} />
         <Stack.Screen name='Olddisease' component={Olddisease} options={{ headerShown: false }} />
         <Stack.Screen name='Activity' component={Activity} options={{ headerShown: false }} />
-        <Stack.Screen name='TicTacToe' component={TicTacToe} options={{ headerShown: false }} />
-        <Stack.Screen name='WordGuessGame' component={WordGuessGame} options={{ headerShown: false }} />
-        <Stack.Screen name='RockPaperScissor' component={RockPaperScissor} options={{ headerShown: false }} />
-        <Stack.Screen name='JokesGenerator' component={JokesGenerator} options={{ headerShown: false }} />
-        <Stack.Screen name='BubblePop' component={BubblePop} options={{ headerShown: false }} />
+        <Stack.Screen name='Permute' component={Permute} options={{ headerShown: false }} />
+        <Stack.Screen name='ProfitLossQuiz' component={ProfitLossQuiz} options={{ headerShown: false }} />
+        <Stack.Screen name='AgeQuiz' component={AgeQuiz} options={{ headerShown: false }} />
+        <Stack.Screen name='SimpleIntrest' component={SimpleIntrest} options={{ headerShown: false }} />
+        <Stack.Screen name='MixtureQuiz' component={MixtureQuiz} options={{ headerShown: false }} />
         <Stack.Screen name='Quiz' component={Quiz} options={{ headerShown: false }} />
-        <Stack.Screen name='Music' component={Music} options={{ headerShown: false }} />
+        <Stack.Screen name='Videos' component={Videos} options={{ headerShown: false }} />
         <Stack.Screen name='Books' component={Books} options={{ headerShown: false }} />
         <Stack.Screen name='ChatBot' component={ChatBot} options={{ headerShown: false }} />
         <Stack.Screen name='HowYourDay' component={HowYourDay} options={{ headerShown: false }} />
         <Stack.Screen name='Helpless' component={Helpless} options={{ headerShown: false }} />
+        <Stack.Screen name='ResumeBuilder' component={ResumeBuilder} options={{ headerShown: false }} />
       </Stack.Navigator>
   )
 }
