@@ -36,8 +36,9 @@ export default function Message() {
         mlservices.ChatBot(input).then(
             res => {
                 const newMessage = { text: input, isUser: true };
-                const botResponse = { text: res.data.response, isUser: false };
+                const botResponse = { text: res.data.Message, isUser: false };
                 setMessages(prevMessages => [...prevMessages, newMessage, botResponse]);
+                console.log(res.data);
             }
         );
     }

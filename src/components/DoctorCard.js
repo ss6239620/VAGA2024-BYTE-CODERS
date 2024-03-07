@@ -11,8 +11,8 @@ export default function DoctorCard({  isButtonRequired }) {
       <View style={{ flexDirection: 'row', margin: 15 }}>
         <View style={{ marginRight: 12 }}>
           <View style={{ marginBottom: 8 }}>
-            <Text style={styles.boldText}>Dr. Charollette Baker</Text>
-            <Text style={styles.smallText}>Heart Surgeon</Text>
+            <Text style={styles.boldText}>Infosys Technology</Text>
+            <Text style={styles.smallText}>web Designer</Text>
           </View>
           <View style={{ flexDirection: 'row' }}>
             <Icon name="star" size={20} color={'#EF802F'} style={{ marginRight: 10, marginTop: 6 }} />

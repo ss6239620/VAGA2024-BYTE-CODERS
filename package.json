@@ -33,7 +33,7 @@
     "react-native-upi-payment": "^1.0.5",
     "react-native-vector-icons": "^10.0.3",
     "react-native-video": "^5.2.1",
-    "react-native-webrtc": "^118.0.2",
+    "react-native-webrtc": "^1.94.2",
     "react-native-webview": "^13.6.3",
     "react-redux": "^9.0.4",
     "redux": "^5.0.1",

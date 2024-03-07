@@ -8,7 +8,7 @@ async function ChatBot(query) {
     }
 
     return new Promise((resolve, reject) => {
-        axios.post(`${API_URL_AIML}/postquestion/`, body)
+        axios.post(`${API_URL_AIML}/getinterviewtips/`, body)
             .then(async (response) => {
                 try {
                     // console.log(response.data);
