@@ -19,7 +19,7 @@ export default function Template({  }) {
                 </TouchableOpacity>
             </View>
             <View style={styles.subContainer}>
-                <LottieView source={require("../../assets/json/Login.json")} autoPlay loop style={{ width: 360, height: 350, }} />
+                <LottieView source={require("../../assets/json/welcome.json")} autoPlay loop style={{ width: 360, height: 350, }} />
             </View>
             <View style={styles.subContainer}>
 

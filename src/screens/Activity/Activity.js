@@ -166,11 +166,11 @@ export default function Activity() {
           </TouchableOpacity>
         </View> */}
         <View style={[styles.subContainer, { marginTop: 28, }]}>
-          <Text style={[styles.bigText, { textAlign: 'left', fontSize: 18, }]}>REFRESH YOUR MOOD</Text>
+          <Text style={[styles.bigText, { textAlign: 'left', fontSize: 18, }]}>General Resources</Text>
           <Reccommendations />
         </View>
         <View style={[styles.subContainer, { marginTop: 28, }]}>
-          <Text style={[styles.bigText, { textAlign: 'left', fontSize: 18, }]}>ACTIVITY TO CHANGE YOUR MOOD</Text>
+          <Text style={[styles.bigText, { textAlign: 'left', fontSize: 18, }]}>Prepare Yourself With Aptidude Test</Text>
           <DifferentActivities />
         </View>
       </ScrollView>

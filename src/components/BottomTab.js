@@ -38,13 +38,13 @@ export default function BottomTab() {
                 }}
             />
             <Tab.Screen
-                name="Activity"
+                name="Resource"
                 component={Activity}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Resource',
                     tabBarIcon: ({ color, size }) => (
-                        <Fontisto name="shopping-bag" color={color} size={35} />
+                        <MaterialCommunityIcons name="pencil-circle" color={color} size={35} />
                     ),
 
                 }}
