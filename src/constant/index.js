@@ -41,7 +41,7 @@ const blueText = {
 }
 
 const API_URL='https://placement.cyclic.app/api'
-const API_URL_AIML='http://127.0.0.1:9000/'
+const API_URL_AIML='http://127.0.0.1:8000/'
 
 // common user email:tester@gmail.com password:tester 
 

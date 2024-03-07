@@ -9,6 +9,11 @@ export default function Message() {
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
 
+    function removeAsterisks(str) {
+        // Use the replace() method with a regular expression to remove all asterisks
+        return str.replace(/\*/g, '');
+    }
+
     function MessageBox({ message }) {
         return (
             <View style={[styles.subContainer, { marginTop: 15 }]}>
@@ -36,7 +41,7 @@ export default function Message() {
         mlservices.ChatBot(input).then(
             res => {
                 const newMessage = { text: input, isUser: true };
-                const botResponse = { text: res.data.Message, isUser: false };
+                const botResponse = { text: removeAsterisks(res.data.Message), isUser: false };
                 setMessages(prevMessages => [...prevMessages, newMessage, botResponse]);
                 console.log(res.data);
             }
