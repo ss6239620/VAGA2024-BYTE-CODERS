@@ -1,5 +1,7 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+# PPT link: [Canva](https://www.canva.com/design/DAF-7ppQGSQ/UdchPxwh_drVI01GX10qrA/edit?utm_content=DAF-7ppQGSQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
